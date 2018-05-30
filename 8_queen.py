@@ -27,14 +27,12 @@ class EightQueen:
     def make_move_steepest_hill(self):
         board = self.board
         h_to_beat = EightQueen.get_h_cost(board)
-        print(h_to_beat)
         if h_to_beat == 0:
             self.complete = False
             return board
         moves = {}
         for col in range(len(board)):
-            best_move = board[col]
-        
+
             for row in range(len(board)):
                 if board[col] == row:
                     #We don't need to evaluate the current
@@ -45,7 +43,6 @@ class EightQueen:
                 #Move the queen to the new row
                 board_copy[col] = row
                 moves[(col,row)] = EightQueen.get_h_cost(board_copy)
-        print(moves)
         best_moves = []
         for move,h_cost in moves.items():
             if h_cost < h_to_beat:
@@ -65,12 +62,16 @@ class EightQueen:
         return board
 
     def solve_board(self):
+        i = 0
         while self.complete:
             move = EightQueen.make_move_steepest_hill(self)
+            i += 1
+            print("Move " + str(i))
             print(move)
 
 if __name__ == "__main__":
     board = [0,0,1,2,4,3]
+    print("Problem")
     print(board)
     out = EightQueen(board)
-    print(out.solve_board())
+    out.solve_board()
