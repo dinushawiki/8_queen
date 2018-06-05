@@ -57,9 +57,9 @@ class EightQueen:
             pick = random.randint(0,len(best_moves) - 1)
             col = best_moves[pick][0]
             row = best_moves[pick][1]
-            board[col] = row
+            self.board[col] = row
 
-        return board
+        return self.board
 
     def solve_board(self):
         i = 0
