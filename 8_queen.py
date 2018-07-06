@@ -4,7 +4,7 @@ class EightQueen:
     def __init__(self, board):
         #initial puzzle
         self.board = board
-        self.complete = True
+        self.incomplete = True
 
     def get_h_cost(self,problem):
         h = 0
@@ -28,7 +28,7 @@ class EightQueen:
         h_to_beat = EightQueen.get_h_cost(self, self.board)
         print(h_to_beat)
         if h_to_beat == 0:
-            self.complete = False
+            self.incomplete = False
             return self.board
         moves = {}
         for col in range(len(self.board)):
@@ -63,7 +63,7 @@ class EightQueen:
 
     def solve_board(self):
         i = 0
-        while self.complete:
+        while self.incomplete:
             move = EightQueen.make_move_steepest_hill(self)
             i += 1
             print("Move " + str(i))
